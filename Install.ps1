@@ -18,7 +18,7 @@ if (!$hasPackageManager) {
 # Install PS7
 Write-Host "`nInstalling Powershell 7 - " -ForegroundColor Yellow -NoNewline; Write-Host "[1-9]" -ForegroundColor Green -BackgroundColor Black
 If (!(Test-Path "C:\Program Files\PowerShell\7\pwsh.exe")) {
-    winget install --id Microsoft.Powershell --source winget --accept-package-agreements --accept-source-agreements | Out-Null
+    winget install --id Microsoft.Powershell --source winget --accept-package-agreements --accept-source-agreements
 }
 else {
     continue
@@ -31,7 +31,7 @@ else {
     $choice1 = Read-Host "Install Windows Terminal? [y/n]" 
     switch ($choice1) {
         y {    
-            winget install --id=Microsoft.WindowsTerminal -e --accept-package-agreements --accept-source-agreements | Out-Null
+            winget install --id=Microsoft.WindowsTerminal -e --accept-package-agreements --accept-source-agreements
         }
         n {continue}
         default {Write-Warning "[y/n] only"}
@@ -72,7 +72,7 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Oh-My-Posh install, add to default prompt, add theme
 Write-Host "`nInstalling Oh-MyPosh & theme - "  -ForegroundColor Yellow -NoNewline ; Write-Host "[6-9]" -ForegroundColor Green -BackgroundColor Black
-winget install JanDeDobbeleer.OhMyPosh --accept-package-agreements --accept-source-agreements | Out-Null
+winget install JanDeDobbeleer.OhMyPosh --accept-package-agreements --accept-source-agreements
 try {
     $dest = "C:\Users\$env:Username\AppData\Local\Programs\oh-my-posh\themes"
     if (!(Test-Path -path $dest)) { New-Item $dest -Type Directory }
