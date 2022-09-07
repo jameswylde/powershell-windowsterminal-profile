@@ -95,7 +95,7 @@ catch { Write-Warning $_ }
 try {
     $dest5 = "C:\temp\wt_assets"
     [System.IO.Directory]::CreateDirectory($dest5) > $null
-    Get-ChildItem ".\src\" -Recurse -Include '*.png' | Copy-Item -Destination $dest5
+    Get-ChildItem ".\src\icons\" -Recurse -Include '*.png' | Copy-Item -Destination $dest5
 }
 catch { Write-Warning $_ }
 
@@ -134,6 +134,6 @@ catch { Write-Warning $_ }
 try {
     $dest4 = "C:\Program Files\PowerShell\7"
     if (!(Test-Path -path $dest4)) { New-Item $dest4 -Type Directory }
-    Copy-Item ".\src\win.png" -Destination $dest4 | Out-Null
+    Copy-Item ".\src\icons\win.png" -Destination $dest4 | Out-Null
 }
 catch { Write-Warning $_ }

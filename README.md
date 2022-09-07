@@ -1,4 +1,4 @@
-***Script built to automate setting up my Windows Terminal and Powershell profile on new machines.*** 
+**Script built to automate setting up my Windows Terminal and Powershell profile on new machines.**
 
 ![Example of Z,PSReadLine](./src/examples/module_image.png)
 
@@ -15,4 +15,6 @@ Usage:
 
 ```.\install.ps1```
 
+![Installer](./src/examples/install.png)
 
+*Progress is not displayed - errors will be thrown if any occur.*
