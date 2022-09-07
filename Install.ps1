@@ -137,3 +137,6 @@ try {
     Copy-Item ".\src\icons\win.png" -Destination $dest4 | Out-Null
 }
 catch { Write-Warning $_ }
+
+# Sleep to allow time for jobs in PS7 to complete installing modules - restart WT if you receive any module errors
+Start-Sleep -Seconds 30
