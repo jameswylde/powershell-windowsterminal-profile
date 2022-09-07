@@ -3,7 +3,7 @@
 
 #Requires -RunAsAdministrator
 
-cls; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow; Write-Host "  github.com/jameswylde/powershell-profile  " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "    Please star if you found this useful.   " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow
+cls; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow; Write-Host "           github.com/jameswylde            " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "    Please star if you found this useful.   " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow
 
 # Install winget if not present (def on W11)
 $hasPackageManager = Get-AppPackage -name "Microsoft.DesktopAppInstaller"
