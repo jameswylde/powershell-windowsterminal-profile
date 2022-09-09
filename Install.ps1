@@ -106,23 +106,21 @@ Write-Host "`nInstalling Z,PsReadLine,Terminal-Icons modules - "  -ForegroundCol
 
 if ($PSVersionTable.PSVersion.Major -eq 7) {
     try {
-        $ps7Job = Start-Job -ScriptBlock {
+        Start-Job -ScriptBlock {
             Install-Module -Name z -RequiredVersion 1.1.3 -Force -Scope CurrentUser -AllowClobber -confirm:$false
             Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -Force -Scope CurrentUser -confirm:$false
             Install-Module -Name PSReadLine -RequiredVersion 2.2.6 -Force -AllowPrerelease -Scope CurrentUser -SkipPublisherCheck
-        } 
-        $ps7Job | Wait-Job | Receive-Job -Job $ps7job
+        } | Wait-Job | Receive-Job
     }
     catch { Write-Warning $_ }
 }
 else {
     try {
-        $notps7Job = Start-Job -ScriptBlock {
+        Start-Job -ScriptBlock {
             Start-Process "C:\Program Files\PowerShell\7\pwsh.exe" -ArgumentList { -Command Install-Module -Name z -RequiredVersion 1.1.3 -Force -Scope CurrentUser -AllowClobber -confirm:$false } -NoNewWindow
             Start-Process "C:\Program Files\PowerShell\7\pwsh.exe" -ArgumentList { -Command Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -Force -Scope CurrentUser -confirm:$false } -NoNewWindow
             Start-Process "C:\Program Files\PowerShell\7\pwsh.exe" -ArgumentList { -Command Install-Module -Name PSReadLine -RequiredVersion 2.2.6 -Force -AllowPrerelease -Scope CurrentUser -SkipPublisherCheck } -NoNewWindow
-        } 
-        $notps7Job | Wait-Job | Receive-Job -Job $notps7Job
+        } | Wait-Job | Receive-Job
     }
     catch { Write-Warning $_ }
 }
