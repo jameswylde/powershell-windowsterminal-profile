@@ -6,8 +6,10 @@
 cls; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow; Write-Host "           github.com/jameswylde            " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "    Please star if you found this useful.   " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow
 
 # Install winget if not present (def on W11)
+#Test-Path "C:\Users\$env:Username\AppData\Local\Microsoft\WindowsApps\winget.exe"
 $hasPackageManager = Get-AppPackage -name "Microsoft.DesktopAppInstaller"
-if (!$hasPackageManager) {
+$hasWingetexe = Test-Path "C:\Users\$env:Username\AppData\Local\Microsoft\WindowsApps\winget.exe"
+if (!$hasPackageManager -or !$hasWingetexe) {
     $releases_url = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $releases = Invoke-RestMethod -uri "$($releases_url)"
