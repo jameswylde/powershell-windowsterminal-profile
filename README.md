@@ -21,4 +21,3 @@ Installation:
 
 ![Installer](./src/examples/install.png)
 
-*Progress is not displayed - errors will be thrown if any occur.*
