@@ -140,5 +140,5 @@ try {
 }
 catch { Write-Warning $_ }
 
-# Sleep to allow time for jobs in PS7 to complete installing modules - restart WT if you receive any module errors
+# Wrap up time for PS7 module install jobs before relaunch of wt.exe
 Start-Sleep -Seconds 30
