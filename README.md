@@ -1,4 +1,4 @@
-**Script built to automate setting up my Windows Terminal and Powershell profile on new machines.**
+**Script built to automate setting up my Windows Terminal and Powershell profile**
 
 ![Example of Z,PSReadLine](./src/examples/module_image.png)
 
