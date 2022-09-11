@@ -27,17 +27,13 @@ else {
 
 # Install WT
 Write-Host "`nInstalling Windows Terminal - " -ForegroundColor Yellow -NoNewline ; Write-Host "[2-9]" -ForegroundColor Green -BackgroundColor Black
-if ($env:WT_SESSION) {}
-else {
-    $choice1 = Read-Host "Install Windows Terminal? [y/n]" 
-    switch ($choice1) {
-        y {    
-            winget install --id=Microsoft.WindowsTerminal -e --accept-package-agreements --accept-source-agreements
-        }
-        n { continue }
-        default { Write-Warning "[y/n] only" }
+$hasWindowsTerminal = Get-AppPackage -Name "Microsoft.WindowsTerminal"
+try {
+    if (!$env:WT_SESSION -eq $true -or !$hasWindowsTerminal) {
+        winget install --id=Microsoft.WindowsTerminal -e --accept-package-agreements --accept-source-agreements
     }
 }
+catch { Write-Warning $_ }
 
 # Install fonts
 Write-Host "`nInstalling Caskaydia Cove Nerd fonts - " -ForegroundColor Yellow -NoNewline ; Write-Host "[3-9]" -ForegroundColor Green -BackgroundColor Black
@@ -76,7 +72,7 @@ Write-Host "`nInstalling Oh-MyPosh & theme - "  -ForegroundColor Yellow -NoNewli
 winget install JanDeDobbeleer.OhMyPosh --accept-package-agreements --accept-source-agreements
 try {
     $dest = "C:\Users\$env:Username\AppData\Local\Programs\oh-my-posh\themes"
-    if (!(Test-Path -path $dest)) { New-Item $dest -Type Directory }
+    if (!(Test-Path -Path $dest)) { New-Item $dest -Type Directory }
     Copy-Item ".\src\wylde.omp.json" -Destination $dest
 }
 catch { Write-Warning $_ }
@@ -84,7 +80,7 @@ catch { Write-Warning $_ }
 # Set PS profile
 Write-Host "`nApplying Powershell profile - " -ForegroundColor Yellow -NoNewline ; Write-Host "[7-9]" -ForegroundColor Green -BackgroundColor Black
 try {
-    if (test-path $profile) { Rename-Item $profile -NewName Microsoft.PowerShell_profile.ps1.bak }
+    if (Test-Path $profile) { Rename-Item $profile -NewName Microsoft.PowerShell_profile.ps1.bak }
 }
 catch { Write-Warning $_ }
 try {
