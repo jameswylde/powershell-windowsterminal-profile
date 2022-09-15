@@ -16,7 +16,7 @@ if (!$hasPackageManager -or !$hasWingetexe) {
     Add-AppxPackage -Path $latestRelease.browser_download_url
 }
 
-# Install PS7
+# Install PS7 
 Write-Host "`nInstalling Powershell 7 - " -ForegroundColor Yellow -NoNewline; Write-Host "[1-9]" -ForegroundColor Green -BackgroundColor Black
 If (!(Test-Path "C:\Program Files\PowerShell\7\pwsh.exe")) {
     winget install --id Microsoft.Powershell --source winget --accept-package-agreements --accept-source-agreements
@@ -25,7 +25,7 @@ else {
     continue
 }
 
-# Install WT
+# Install Windows Terminal
 Write-Host "`nInstalling Windows Terminal - " -ForegroundColor Yellow -NoNewline ; Write-Host "[2-9]" -ForegroundColor Green -BackgroundColor Black
 $hasWindowsTerminal = Get-AppPackage -Name "Microsoft.WindowsTerminal"
 try {
