@@ -11,7 +11,7 @@
 - Install my Powershell profile (Oh-My-Posh config, git shortcuts, autocompletes, psreadline config) & backup
 - Install required glyphed fonts (*Caskaydia Cove Nerd Mono*)
 
-Installation:
+Usage:
 
 `#Requires -RunAsAdministrator`
 
