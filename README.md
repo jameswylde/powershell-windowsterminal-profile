@@ -1,4 +1,4 @@
-**Script built to automate setting up my Windows Terminal and Powershell profile**
+**Script built to automate installing Windows Terminal, PS7, Oh-My-Posh, Powershell profile, glyphed fonts.**
 
 ![Example of Z,PSReadLine](./src/examples/module_image.png)
 

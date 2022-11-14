@@ -1,4 +1,4 @@
-# github.com/jameswylde
+# github.com/jameswyldeMSFT
 # Installation of Windows Terminal, PS7, Oh-MyPosh, theme, PSModules; Z, PSReadLine, Terminal-Icons, Windows Terminal config
 
 #Requires -RunAsAdministrator
@@ -36,7 +36,7 @@ try {
 catch { Write-Warning $_ }
 
 # Install fonts
-Write-Host "`nInstalling Caskaydia Cove Nerd fonts - " -ForegroundColor Yellow -NoNewline ; Write-Host "[3-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nInstalling glyphed fonts for OMP [Caskaydia Cove Nerd] - " -ForegroundColor Yellow -NoNewline ; Write-Host "[3-9]" -ForegroundColor Green -BackgroundColor Black
 try {
     $shellObject = New-Object -ComObject shell.application
     $fonts = $ShellObject.NameSpace(0x14)
