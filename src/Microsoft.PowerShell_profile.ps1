@@ -11,6 +11,19 @@ oh-my-posh --init --shell pwsh --config "C:\Users\$env:userName\AppData\Local\Pr
 
 Import-Module -Name Terminal-Icons
 
+# Simple touch function
+function touch {
+    Param(
+          [Parameter(Mandatory = $true)]
+          [string]$Path
+    )
+    if (Test-Path -LiteralPath $Path) {
+      (Get-Item -Path $Path).LastWriteTime = Get-Date
+    }
+    else {
+          New-Item -Type File -Path $Path
+    }
+}
 
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     param($wordToComplete, $commandAst, $cursorPosition)
