@@ -1,4 +1,4 @@
-**Script built to automate setting up my Windows Terminal and Powershell profile**
+**Script built to automate installing Windows Terminal, PS7, Oh-My-Posh, Powershell profile, glyphed fonts.**
 
 ![Example of Z,PSReadLine](./src/examples/module_image.png)
 
@@ -11,7 +11,7 @@
 - Install my Powershell profile (Oh-My-Posh config, git shortcuts, autocompletes, psreadline config) & backup
 - Install required glyphed fonts (*Caskaydia Cove Nerd Mono*)
 
-Usage:
+Installation:
 
 `#Requires -RunAsAdministrator`
 
@@ -19,5 +19,6 @@ Usage:
 .\install.ps1
 ```
 
+Installation steps:
 ![Installer](./src/examples/install.png)
 
