@@ -18,7 +18,3 @@ Installation:
 ```powershell
 .\install.ps1
 ```
-
-Installation steps:
-![Installer](./src/examples/install.png)
-
