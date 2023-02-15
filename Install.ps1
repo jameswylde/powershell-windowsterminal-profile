@@ -1,11 +1,9 @@
-# github.com/jameswyldeMSFT
-# Installation of Windows Terminal, PS7, Oh-MyPosh, theme, PSModules; Z, PSReadLine, Terminal-Icons, Windows Terminal config
-
 #Requires -RunAsAdministrator
 
-cls; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow; Write-Host "           github.com/jameswylde            " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "    Please star if you found this useful.   " -ForegroundColor Black -BackgroundColor Yellow ; Write-Host "   **************************************   " -ForegroundColor Black -BackgroundColor Yellow
+cls
 
-# Install winget if not present (def on W11)
+# Check for winget and install
+Write-Host "`nInstalling winget - " -ForegroundColor Yellow -NoNewline; Write-Host "[1-10]" -ForegroundColor Green -BackgroundColor Black
 $hasPackageManager = Get-AppPackage -name "Microsoft.DesktopAppInstaller"
 $hasWingetexe = Test-Path "C:\Users\$env:Username\AppData\Local\Microsoft\WindowsApps\winget.exe"
 if (!$hasPackageManager -or !$hasWingetexe) {
@@ -17,7 +15,7 @@ if (!$hasPackageManager -or !$hasWingetexe) {
 }
 
 # Install PS7 
-Write-Host "`nInstalling Powershell 7 - " -ForegroundColor Yellow -NoNewline; Write-Host "[1-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nInstalling Powershell 7 - " -ForegroundColor Yellow -NoNewline; Write-Host "[2-10]" -ForegroundColor Green -BackgroundColor Black
 If (!(Test-Path "C:\Program Files\PowerShell\7\pwsh.exe")) {
     winget install --id Microsoft.Powershell --source winget --accept-package-agreements --accept-source-agreements
 }
@@ -26,7 +24,7 @@ else {
 }
 
 # Install Windows Terminal
-Write-Host "`nInstalling Windows Terminal - " -ForegroundColor Yellow -NoNewline ; Write-Host "[2-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nInstalling Windows Terminal - " -ForegroundColor Yellow -NoNewline ; Write-Host "[3-10]" -ForegroundColor Green -BackgroundColor Black
 $hasWindowsTerminal = Get-AppPackage -Name "Microsoft.WindowsTerminal"
 try {
     if (!$env:WT_SESSION -eq $true -or !$hasWindowsTerminal) {
@@ -35,8 +33,8 @@ try {
 }
 catch { Write-Warning $_ }
 
-# Install fonts
-Write-Host "`nInstalling glyphed fonts for OMP [Caskaydia Cove Nerd] - " -ForegroundColor Yellow -NoNewline ; Write-Host "[3-9]" -ForegroundColor Green -BackgroundColor Black
+# Install glyphed fonts
+Write-Host "`nInstalling glyphed fonts for OMP [Caskaydia Cove Nerd] - " -ForegroundColor Yellow -NoNewline ; Write-Host "[4-10]" -ForegroundColor Green -BackgroundColor Black
 try {
     $shellObject = New-Object -ComObject shell.application
     $fonts = $ShellObject.NameSpace(0x14)
@@ -57,18 +55,18 @@ try {
 catch { Write-Warning $_ }
 
 # Update JSON with user env variables
-Write-Host "`nApplying WT.exe settings.json with env variables - " -ForegroundColor Yellow -NoNewline ; Write-Host "[4-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nApplying WT.exe settings.json with env variables - " -ForegroundColor Yellow -NoNewline ; Write-Host "[5-10]" -ForegroundColor Green -BackgroundColor Black
 $json = Get-Content ".\src\settings.json" | ConvertFrom-Json 
 $json.profiles.list[0].startingDirectory = "C:\$env:USERNAME\Documents"
 $json | ConvertTo-Json -Depth 15 | Out-File ".\src\setting.json"
 
 # Set PSGallery as trusted
-Write-Host "`nSetting PSGallery as trusted repo - " -ForegroundColor Yellow -NoNewline ; Write-Host "[5-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nSetting PSGallery as trusted repo - " -ForegroundColor Yellow -NoNewline ; Write-Host "[6-10]" -ForegroundColor Green -BackgroundColor Black
 Install-PackageProvider -Name NuGet -Force | Out-Null
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Oh-My-Posh install, add to default prompt, add theme
-Write-Host "`nInstalling Oh-MyPosh & theme - "  -ForegroundColor Yellow -NoNewline ; Write-Host "[6-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nInstalling Oh-MyPosh & theme - "  -ForegroundColor Yellow -NoNewline ; Write-Host "[7-10]" -ForegroundColor Green -BackgroundColor Black
 winget install JanDeDobbeleer.OhMyPosh --accept-package-agreements --accept-source-agreements
 try {
     $dest = "C:\Users\$env:Username\AppData\Local\Programs\oh-my-posh\themes"
@@ -78,7 +76,7 @@ try {
 catch { Write-Warning $_ }
 
 # Set PS profile
-Write-Host "`nApplying Powershell profile - " -ForegroundColor Yellow -NoNewline ; Write-Host "[7-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nApplying Powershell profile - " -ForegroundColor Yellow -NoNewline ; Write-Host "[8-10]" -ForegroundColor Green -BackgroundColor Black
 try {
     if (Test-Path $profile) { Rename-Item $profile -NewName Microsoft.PowerShell_profile.ps1.bak }
 }
@@ -97,7 +95,7 @@ try {
 catch { Write-Warning $_ }
 
 # Install ps modules in PS7
-Write-Host "`nInstalling Z,PsReadLine,Terminal-Icons modules - "  -ForegroundColor Yellow -NoNewline ; Write-Host "[8-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nInstalling Z,PsReadLine,Terminal-Icons modules - "  -ForegroundColor Yellow -NoNewline ; Write-Host "[9-10]" -ForegroundColor Green -BackgroundColor Black
 
 if ($PSVersionTable.PSVersion.Major -eq 7) {
     try {
@@ -121,7 +119,7 @@ else {
 }
 
 # Set WT settings.json
-Write-Host "`nApplying Windows Terminal default settings - " -ForegroundColor Yellow -NoNewline ; Write-Host "[9-9]" -ForegroundColor Green -BackgroundColor Black
+Write-Host "`nApplying Windows Terminal default settings - " -ForegroundColor Yellow -NoNewline ; Write-Host "[10-10]" -ForegroundColor Green -BackgroundColor Black
 try {
     $dest3 = "C:\Users\$env:Username\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
     if (!(Test-Path -path $dest3)) { New-Item $dest3 -Type Directory }
@@ -135,7 +133,7 @@ try {
 }
 catch { Write-Warning $_ }
 
-# Wrap up time for PS7 module install jobs before relaunch of wt.exe
+# Wrap up time for PS7 module install jobs
 [int]$time = 30
 $length = $time / 100
 for ($time; $time -gt 0; $time--) {
