@@ -1,6 +1,6 @@
 # Quick start Windows Terminal, Powershell 7, Oh-My-Posh, and more...
 
-**Quick start PS7 setup...**
+**Quick start automated PS7 and WT setup to fork and make your own for fast dev setups on new machines...**
 
 ![Preview](./docs/example.png)
 
