@@ -2,7 +2,7 @@
 
 **Quick start PS7 setup...**
 
-![Preview](./docs/examples/example.png)
+![Preview](./docs/example.png)
 
 ## About
 
