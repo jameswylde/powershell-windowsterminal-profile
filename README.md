@@ -59,6 +59,18 @@ I put this repo together as I'm endlessly jumping machines - I have a private re
 - **Oh-My-Posh Theme**: `%LOCALAPPDATA%\Programs\oh-my-posh\themes\wylde.omp.json`
 
 
+## Forking
+As mentioned - this is a template script, I encourage you to fork this repo and add your own modules and winget installs. Add your functions to the script and add, for example:
+
+```powershell
+    $steps = @(
+        { Install-YourModule -Name 'YourModuleName' -Version '1.0.0' }
+        { Install-WinGetPackage -Package 'Your.Package.Name' },
+        { Install-YourCustomFunction }
+    )
+```
+
+
 ## 🗑️ Uninstalling
 
 ### Remove Configuration Only
@@ -78,21 +90,3 @@ The uninstaller:
 - Optionally removes installed applications
 
 
-## Forking
-As mentioned - this is a template script, I encourage you to fork this repo and add your own modules and winget installs. Add your functions to the script and add, for example:
-
-```powershell
-    $steps = @(
-        { Install-YourModule -Name 'YourModuleName' -Version '1.0.0' }
-        { Install-WinGetPackage -Package 'Your.Package.Name' },
-        { Install-YourCustomFunction }
-    )
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-**Execution Policy Error**
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
