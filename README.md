@@ -32,7 +32,7 @@ I put this repo together as I'm endlessly jumping machines - I have a private re
 
 ```powershell
 .\install.ps1
-
+```
 
 ### Installation Options
 
