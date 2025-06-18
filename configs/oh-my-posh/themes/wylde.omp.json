@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf063 ",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "mapped_shell_names": {
+              "pwsh": "ps7"
+            }
+          },
+          "template": "{{ .Shell }}",
+          "type": "shell",
+          "style": "diamond",
+          "foreground": "#ffc814"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf553 ",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}",
+          "foreground": "#0084ff",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf553 ",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "folder"
+          },
+          "template": "{{ .Path }} ",
+          "foreground": "#02d244",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .Segments.Git }}\uf553{{ else }}\uf553{{ end }}",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_ahead_icon": "<#88C0D0>\u21e1 </>",
+            "branch_behind_icon": "<#88C0D0>\u21e3 </>",
+            "branch_icon": " ",
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true
+          },
+          "template": "{{ if .Segments.Git }}{{ .Segments.Git.HEAD }} {{ .Segments.Git.BranchStatus }}{{ if .Segments.Git.Working.Changed }}< #FFAFD7> *</>{{ .Segments.Git.Working.String }}{{ end }}{{ if and (.Segments.Git.Working.Changed) (.Segments.Git.Staging.Changed) }} |{{ end }}{{ if .Segments.Git.Staging.Changed }} \uf046 {{ .Segments.Git.Staging.String }}{{ end }}{{ if gt .Segments.Git.StashCount 0 }} \uf692 {{ .Segments.Git.StashCount }}{{ end }}{{ end }}",
+          "foreground": "#f03454",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .Segments.Git }} \uf553{{ end }}",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "roundrock",
+            "threshold": 0
+          },
+          "template": " {{ .FormattedMs }}",
+          "foreground": "#fff82d",
+          "type": "executiontime",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf553",
+          "foreground": "#FFFFFF",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " X",
+          "foreground": "#ff0019",
+          "type": "exit",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf0e7",
+          "foreground": "#ff9100",
+          "type": "root",
+          "style": "plain"
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
