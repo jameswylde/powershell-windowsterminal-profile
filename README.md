@@ -8,7 +8,7 @@
 
 ## About
 
-I put this repo together as I'm endlessly jumping machines - I have a private repo of this script which installs all the modules I use and an endless list of winget installs so I'm up and running quickly on a new machine. Please fork aware and add all the winget installs and modules you might need to get up and running quickly on new machines.
+I put this repo together as I'm endlessly jumping machines - I have a private repo of this script which installs all the modules I use and an endless list of winget installs so I'm up and running quickly on a new machine. Please fork away and add all the winget installs and modules you might need to get up and running on new machines.
 
 ## ✨ Features
 
