@@ -65,9 +65,25 @@ As mentioned - this is a template script, I encourage you to fork this repo and 
 ```powershell
     $steps = @(
         { Install-YourModule -Name 'YourModuleName' -Version '1.0.0' }
-        { Install-WinGetPackage -Package 'Your.Package.Name' },
         { Install-YourCustomFunction }
     )
+```
+
+Add your own winget installs to the `Start-WingetBatchInstall` function in the script, for example:
+
+```powershell
+    $packages = @(
+        "Git.Git",
+        "Microsoft.VisualStudioCode",
+        "Microsoft.RemoteDesktopClient",
+        "Google.Chrome",
+        "GitHub.GitHubDesktop",
+        "GitHub.cli",
+        "Docker.DockerDesktop",
+        "Microsoft.PowerToys",
+        "Microsoft.Azure.StorageExplorer"
+    )
+
 ```
 
 

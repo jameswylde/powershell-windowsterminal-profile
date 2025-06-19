@@ -498,6 +498,41 @@ function Set-WindowsTerminalConfig {
     }
 }
 
+function Start-WingetBatchInstall {
+    Write-Host "    Installing additional WinGet packages" -NoNewline -ForegroundColor White
+    $dots = "." * (70 - "    Installing additional WinGet packages".Length - 2)
+    Write-Host $dots -NoNewline -ForegroundColor DarkGray
+
+    $packages = @(
+        "Git.Git",
+        "7zip.7zip"
+    )
+
+    try {
+        Write-Host " ✓" -ForegroundColor Green
+
+        foreach ($package in $packages) {
+            $result = winget install --id=$package -e --accept-package-agreements --accept-source-agreements --silent
+            if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne -1978335189) {
+                Write-StatusLine "Installing package: $package" -Status 'Error' -IsSubStep
+            } else {
+                if ($LASTEXITCODE -eq -1978335189) {
+                    Write-StatusLine "Installing package: $package" -Status 'AlreadyInstalled' -IsSubStep -AdditionalInfo "Already installed"
+                } else {
+                    Write-StatusLine "Installing package: $package" -Status 'Success' -IsSubStep
+                }
+            }
+        }
+
+        return $true
+    }
+    catch {
+        Write-Host " ✗" -ForegroundColor Red
+        return $false
+    }
+}
+
+
 # installation function junction
 function Start-Installation {
     param([string]$Mode)
@@ -510,14 +545,15 @@ function Start-Installation {
     }
 
     $steps = @(
-        { Install-WinGet },
-        { Install-WindowsTerminal },
-        { Install-Fonts },
-        { Set-PSRepository },
-        { Install-OhMyPosh },
-        { Install-PowerShellModules },
-        { Set-PowerShellProfile },
-        { Set-WindowsTerminalConfig }
+        {Install-WinGet},
+        {Install-WindowsTerminal},
+        {Install-Fonts},
+        {Set-PSRepository},
+        {Install-OhMyPosh},
+        {Install-PowerShellModules},
+        {Set-PowerShellProfile},
+        {Set-WindowsTerminalConfig},
+        {Start-WingetBatchInstall}
     )
 
     $successful = 0
