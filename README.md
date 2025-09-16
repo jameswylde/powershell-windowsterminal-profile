@@ -10,7 +10,7 @@
 
 I put this repo together as I'm endlessly jumping machines - I have a private repo of this script which installs all the modules I use and an endless list of winget installs so I'm up and running quickly on a new machine. Please fork away and add all the winget installs and modules you might need to get up and running on new machines.
 
-## ✨ Features
+## Features
 
 - **Windows Terminal** with custom configuration and themes
 - **Oh-My-Posh** for a prettier prompt - with my theme wylde.omp.json
@@ -19,7 +19,7 @@ I put this repo together as I'm endlessly jumping machines - I have a private re
 - **Smart Completion**: Bracket pairing, quote handling, argument cycling
 - **Predictive IntelliSense** with history-based suggestions
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - **Windows 10/11**
@@ -89,7 +89,7 @@ Add your own winget installs to the `Start-WingetBatchInstall` function in the s
 ```
 
 
-## 🗑️ Uninstalling
+## Uninstalling
 
 ### Remove Configuration Only
 ```powershell
